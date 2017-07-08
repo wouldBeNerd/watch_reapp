@@ -23,12 +23,17 @@ function watch_reapp(app_str, config){//app_fn will execute when watch_cycle end
   if(config){
     if(config.dir) dir = config.dir;
     if(config.watch_ext) watch_ext = config.watch_ext;
-    if(config.ignore_dirs) ignore_dirs = config.ignore_dirs;
+    if(config.ignore_dirs){ 
+      ignore_dirs = config.ignore_dirs
+      if(ignore_dirs.indexOf('./LOGS/') === -1) ignore_dirs.push('./LOGS/');
+    };
     if(config.ignore_files) ignore_files = config.ignore_files;
     if(config.ignore_dirs_containing) ignore_dirs_containing = config.ignore_dirs_containing;
   }
   let watch_arr = []//file+dir goes here to watch
   let watching_arr = []
+  //CREATE ./LOGS/ DIR IF IT DOES NOT EXIST
+  if(!fs.existsSync("./LOGS/")) fs.mkdirSync("./LOGS/");  
   //CHILD PROCESS RUNS IN HERE prep child process/app_fn
   const spawn = require('child_process').spawn
   function new_child_process(){

@@ -1,7 +1,8 @@
 # watch_reapp
 Watches your app's directory for changes and restarts it when changes are made to it's files. 
 Logs console output of your app to file and to console.
-####your main directory where the app runs requires a LOGS folder
+#### directory './LOGS/' will be created if absent and will always be ignored
+#### (even when using a config object) 
 
 ## How to use
 Create a js file.

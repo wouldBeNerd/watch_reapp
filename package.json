@@ -1,6 +1,6 @@
 {
   "name": "watch_reapp",
-  "version": "1.0.4",
+  "version": "1.0.10",
   "description": "watches all files and folders restarts app when changes are made, crashes on error and waits for change to restart, very simple app ",
   "main": "watch_reapp.js",
   "scripts": {
