@@ -1,19 +1,34 @@
 {
-  "name": "watch_reapp",
-  "version": "1.0.10",
-  "description": "watches all files and folders restarts app when changes are made, crashes on error and waits for change to restart, very simple app ",
-  "main": "watch_reapp.js",
+  "name": "watch_refresh",
+  "version": "1.0.2",
+  "description": "refreshes client browsers when changes are made, uses JSONP script tags to refresh, use this only in a secure/local environment, very light none-secure app for tinkering",
+  "main": "watch_refresh.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
+    "browser",
+    "browser-refresh",
+    "refresh",
+    "auto-restart",
+    "client-refresh",
     "watch",
     "watcher",
-    "auto-restart"
+    "monitor",
+    "file",
+    "directory",
+    "auto-restart",
+    "monitor",
+    "development",
+    "reload",
+    "restart",
+    "start",
+    "run",
+    "modify"  
   ],
   "repository": {
     "type": "git",
-    "url": "watch_reapp"
+    "url": "watch_refresh"
   },
   "author": "mattias lemmens",
   "license": "ISC",

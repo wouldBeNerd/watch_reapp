@@ -59,6 +59,3 @@
   function yellow(string){return colors.fg.yellow + string + colors.reset}  
   function white(string){return colors.fg.white + string + colors.reset}     
   function red(string){return colors.fg.red + string + colors.reset}        
-
-
-
