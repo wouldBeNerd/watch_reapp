@@ -1,4 +1,4 @@
-# watch_refresh (in beta)
+# watch_refresh
 Refreshes your browser automatically when you modify your files.
 If this module has anything going for itself it's that it is light on dependencies, fast and simple to use. 
 **Use this only in a secure development environment**, it uses JSONP script tags to call the server. 
