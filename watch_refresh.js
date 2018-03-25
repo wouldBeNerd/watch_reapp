@@ -51,7 +51,7 @@ function watch_refresh(ip_or_host_url, config){//server will execute when watch_
     if(config.watch_ext) watch_ext = config.watch_ext;
     if(config.ignore_dirs){ 
       ignore_dirs = config.ignore_dirs
-      if(ignore_dirs.indexOf(logs_dir) === -1) ignore_dirs.push(logs_dir);
+      // if(ignore_dirs.indexOf(logs_dir) === -1) ignore_dirs.push(logs_dir);
     };
     if(config.ignore_files) ignore_files = config.ignore_files;
     if(config.ignore_dirs_containing) ignore_dirs_containing = config.ignore_dirs_containing;
