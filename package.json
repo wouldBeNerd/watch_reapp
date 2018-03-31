@@ -1,6 +1,6 @@
 {
   "name": "watch_refresh",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "refreshes client browsers when changes are made, uses JSONP script tags to refresh, use this only in a secure/local environment, very light none-secure app for tinkering",
   "main": "watch_refresh.js",
   "scripts": {

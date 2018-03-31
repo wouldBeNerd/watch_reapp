@@ -8,7 +8,7 @@ module.exports = function https_server(port_num){
     }    
     const request_handler = (req, res)=>{
         if(req.url === "/"){
-            fs.readFile("./VIEWS/index_https.html", function(error, pgResp){
+            fs.readFile("./client/index_https.html", function(error, pgResp){
                 if(error){
                     res.writeHead(404);
                     res.write("contents not found")

@@ -3,7 +3,7 @@ module.exports = function http_server(port_num){
     const http = require("http");
     const request_handler = (req, res)=>{
         if(req.url === "/"){
-            fs.readFile("./VIEWS/index.html", function(error, pgResp){
+            fs.readFile("./client/index.html", function(error, pgResp){
                 if(error){
                     res.writeHead(404);
                     res.write("contents not found")

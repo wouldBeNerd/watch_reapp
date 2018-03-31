@@ -34,7 +34,7 @@ function watch_refresh(ip_or_host_url, config){//server will execute when watch_
   const on_file_change = require('on-file-change');//by Jan Święcki <jan.swiecki@gmail.com>
   let refresh_server
   //defaults  
-  let dir = './VIEWS/'//starting dir, './ to look in the folder where the app is running
+  let dir = './client/'//starting dir, './ to look in the folder where the app is running
   let watch_ext = ['.js', '.html', '.css', '.json'] //file extensions to watch
   let ignore_dirs = ['./node_modules/', './.vscode/', "./.git/"] //directories to ignore, 
   let ignore_files = [] //files to ignore,

@@ -1,7 +1,8 @@
 # watch_refresh
-Refreshes your browser automatically when you modify your files.
+Refreshes your browser when you modify your files.
 If this module has anything going for itself it's that it is light on dependencies, fast and simple to use. 
-**Use this only in a secure development environment**, it uses JSONP script tags to call the server. 
+Because the script tag runs separately from your own scripts it will still refresh the page if you encoutered an error. 
+It uses JSONP script tags to call the server. 
 **https NOW works with Chrome and Safari, but not EDGE(i could use some advice for this if anyone has any)**
 
 ## How to use
@@ -12,13 +13,13 @@ npm i watch_refresh --save-dev
 #### Place this script tag in the html pages you want to refresh automatically
 ```html
 <!--place at the bottom of the body, modify the url and port if you modified it in the module!-->
-<!--change to https if you are using https-->
+<!--change to https if you are using https, change the ip address if you are testing on a different server-->
 <script src='http://127.0.0.1:1337/watch_refresh_client_script_init.js'></script>
 <!--don't forget to delete the tag once you finish designing your page-->
 ```
 #### With default settings without config object
 url '127.0.0.1' is used with port '1337',
-local dir('./VIEWS/') is watched, 
+local dir('./client/') is watched, 
 files with extensions .js, .html, .css, .json will be added to watch list on init,
 no directories ignored except for the following `['./node_modules/', './.vscode/', './LOGS/','./.git/']`
 
@@ -32,12 +33,26 @@ watch_refresh()
 ```
 
 #### When including a config object
+**the default directory is now './client/' and port is 1339 be sure to indicate a directory and port if you want to change them**
+**if you modifiy the you must also modify the port in the script tag**
+**If you are using react or any other package that bundles to one big js file, then set the watching directory to watch the bundled file** 
+
+```javascript
+//require watch_refresh module
+const watch_refresh = require('watch_refresh')
+//run module, with path to app you wish to run
+watch_refresh({
+    dir:'./client/',
+    port: 1337
+})
+//default '127.0.0.1' and port '1337' will be used 
+```
 ```javascript
 //MODIFICATIONS IN THIS FILE WILL NOT BE UPDATED AUTOMATICALLY
 //create a config object
 const config = {
  port: 1337,
- dir :'./VIEWS/',//this directory is the starting point for all subfolders and files scanned
+ dir :'./client/',//this directory is the starting point for all subfolders and files scanned
  watch_ext : ['.js','.html', '.css', '.json'], //file extensions to watch
  ignore_dirs : ['./node_modules/', './.vscode/', './LOGS/'], //directories to ignore, 
  ignore_dirs_containing : ['ZDEP_'], //wildcard strings directory
@@ -58,7 +73,7 @@ const watch_refresh = require('./../watch_refresh')
 //run module, with path to app you wish to run and add the config object as second parameter
 watch_refresh('127.0.0.1', 
 {
-    'port':1337, dir:'./VIEWS/', 
+    'port':1337, dir:'./client/', 
     'key':fs.readFileSync('./https/server.key'), 
     'cert':fs.readFileSync('./https/server.crt')
 })
@@ -72,7 +87,7 @@ const watch_refresh = require('./../watch_refresh')
 //run module, with path to app you wish to run and add the config object as second parameter
 watch_refresh('127.0.0.1', 
 {
-    'port':1337, dir:'./VIEWS/', 
+    'port':1337, dir:'./client/', 
     'key':fs.readFileSync('./https/server.key'), 
     'cert':fs.readFileSync('./https/server.crt'),
     'ca': fs.readFileSync('./https/server.csr')
@@ -90,7 +105,11 @@ in test_files folder for examples
 ## Updates
 #### 1.0.0 (2017-10-17)
  - added JSDoc support (when trying to use watch_refresh you should now receive informative and helpful intellisense, tested in visual studio code, technically you shouldnt even need this readme anymore)
-
+#### 1.0.4 (2018-03-31)
+ - fixed a bug in the example
+ - changed default directory to '/client/'
+ - ammended README.md
+ - https certificates are no longer valid 
 #### Good to know
 
 for each browser connecting to the watch_refresh a code will be generated and stored
