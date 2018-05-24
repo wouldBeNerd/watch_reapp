@@ -33,10 +33,18 @@ module.exports = function init_request_handler(ip_or_host_url, port_num, server_
         "document.body.appendChild(script_ele); "
     }()
 
-    jsResp = jsResp.replace(
-        "http://localhost:1337/watch_refresh_client_script_",
-        server_type_str+"://"+ip_or_host_url+":"+port_num+"/watch_refresh_client_script_"
-    )
+    if(ip_or_host_url === "127.0.0.1"){
+        jsResp = jsResp.replace(
+            "http://localhost:1337/watch_refresh_client_script_",
+            server_type_str+"://localhost:"+port_num+"/watch_refresh_client_script_"
+        )        
+    }else{
+        jsResp = jsResp.replace(
+            "http://localhost:1337/watch_refresh_client_script_",
+            server_type_str+"://"+ip_or_host_url+":"+port_num+"/watch_refresh_client_script_"
+        )
+
+    }
 
 
     //random 10 digit keys are generated client side to identify each connecting browser
