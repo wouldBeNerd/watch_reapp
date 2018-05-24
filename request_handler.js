@@ -33,17 +33,27 @@ module.exports = function init_request_handler(ip_or_host_url, port_num, server_
         "document.body.appendChild(script_ele); "
     }()
 
-    if(ip_or_host_url === "127.0.0.1"){
-        jsResp = jsResp.replace(
-            "http://localhost:1337/watch_refresh_client_script_",
-            server_type_str+"://localhost:"+port_num+"/watch_refresh_client_script_"
-        )        
-    }else{
-        jsResp = jsResp.replace(
-            "http://localhost:1337/watch_refresh_client_script_",
-            server_type_str+"://"+ip_or_host_url+":"+port_num+"/watch_refresh_client_script_"
-        )
-
+    switch(ip_or_host_url){
+        case "127.0.0.1" : {
+            jsResp = jsResp.replace(
+                "http://localhost:1337/watch_refresh_client_script_",
+                server_type_str+"://"+"localhost"+":"+port_num+"/watch_refresh_client_script_"
+            )
+            break;
+        }
+        case "localhost" : {
+            jsResp = jsResp.replace(
+                "http://localhost:1337/watch_refresh_client_script_",
+                server_type_str+"://"+"localhost"+":"+port_num+"/watch_refresh_client_script_"
+            )
+            break;
+        }
+        default : {
+            jsResp = jsResp.replace(
+                "http://localhost:1337/watch_refresh_client_script_",
+                server_type_str+"://"+ip_or_host_url+":"+port_num+"/watch_refresh_client_script_"
+            )
+        }
     }
 
 
